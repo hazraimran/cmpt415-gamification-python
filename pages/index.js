@@ -10,6 +10,7 @@ import StudentProfileComponent from '../components/StudentProfileComponent'
 import DiscussionComponent from '../components/DiscussionComponent'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import HomePageComponent from '../components/HomePageComponent'
 
 export default function Home() {
   const [loading, setLoading] = useState(true)
@@ -67,6 +68,9 @@ export default function Home() {
       currentPage = (<StudentProfileComponent></StudentProfileComponent>)
     } else if (page === Pages.DISCUSSION) {
       currentPage = (<DiscussionComponent></DiscussionComponent>)
+    }
+    else if(page == Pages.Home){
+      currentPage = (<HomePageComponent></HomePageComponent>)
     }
 
     return (

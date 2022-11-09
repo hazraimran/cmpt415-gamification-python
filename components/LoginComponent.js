@@ -88,7 +88,8 @@ function LoginComponent(props) {
         const email = signUpEmailRef.current.value
         const password = signUpPasswordRef.current.value
         const passwordRepeat = signUpPasswordConfirmRef.current.value
-
+        console.log('auth:')
+        console.log(auth)
         if (validateSignUp({ name, email, password, passwordRepeat })) {
             createUserWithEmailAndPassword(auth, email, password)
                 .then(() => {

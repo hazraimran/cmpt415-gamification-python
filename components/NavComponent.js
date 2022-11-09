@@ -43,6 +43,16 @@ export default function NavComponent(props) {
         setPage(Pages.PROFILE)
     }
 
+     /**
+     * Handles the user's profile being opened.
+     * @param {*} e 
+     */
+      const handleHomeClick = (e) => {
+        e.preventDefault()
+        setOpenedModule(null)
+        setPage(Pages.Home)
+    }
+
     /**
      * Handles the discussion board being opened.
      * @param {*} e 
@@ -87,6 +97,9 @@ export default function NavComponent(props) {
         navBarContents = (
             <div className="collapse navbar-collapse" id="navbarText">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                        <a className={"nav-link" + checkIfActive(Pages.Home)} aria-current="page" href="#" onClick={handleHomeClick}>Home</a>
+                    </li>
                     <li className="nav-item">
                         <a className={"nav-link" + checkIfActive(Pages.MODULES)} href="#" onClick={handleModulesClick}>Modules</a>
                     </li>
