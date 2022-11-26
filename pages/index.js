@@ -10,7 +10,6 @@ import StudentProfileComponent from '../components/StudentProfileComponent'
 import DiscussionComponent from '../components/DiscussionComponent'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import Landing from '../components/editor/components/Landing'
 
 export default function Home() {
   const [loading, setLoading] = useState(true)
@@ -67,7 +66,7 @@ export default function Home() {
     } else if (page === Pages.STUDENT_PROFILE) {
       currentPage = (<StudentProfileComponent></StudentProfileComponent>)
     } else if (page === Pages.DISCUSSION) {
-      currentPage = (<Landing></Landing>)
+      currentPage = (<DiscussionComponent></DiscussionComponent>)
     }
 
     return (

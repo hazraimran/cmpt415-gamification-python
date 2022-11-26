@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext, memo } from 'react'
-import { giveStudentScore, getStudentAnswers, solvedQuestionCheck } from '../data/Students'
+import { giveStudentScore, getStudentAnswers, solvedQuestionCheck, solvedQuestionUpdate, getStudentScore, takeStudentScore } from '../data/Students'
 import { getPersonalization } from "../data/Personalization"
 import PersonalizationComponent from './PersonalizationComponent'
 import { useFormik } from 'formik'
@@ -20,6 +20,7 @@ import { auth } from '../firebase'
 import { v4 } from 'uuid'
 import { Quiz } from '../data/Quiz'
 
+
 /**
  * Component for a module's contents and multiple choice questions.
  * @param {*} props 
@@ -32,6 +33,8 @@ function OpenModuleComponent(props) {
 
     // Context: user, editor state, challenge data, personalization, toast
     const { user, setEditorState, setChallengeData, personalization, setPersonalization, setToast } = useContext(Context)
+
+    const currentScore = getStudentScore(user)
 
     // State for the module's contents
     const [elements, setElements] = useState([])
@@ -107,22 +110,27 @@ function OpenModuleComponent(props) {
         onSubmit: values => {
             const pick = values.picked
             const checked = solvedQuestionCheck(user, moduleName, currentPage)
+            solvedQuestionUpdate(user, moduleName, currentPage)
             show_related()
             if (pick === String(questions[currentQuestion].correctAnswerIndex)) {
                 setCurrentExplanation("✓ " + questions[currentQuestion].explanation)
-                if (!checked) {
-                    giveStudentScore(user, 50)
-                    setToast({
-                        title: "Correct!",
-                        message: "⭐ +50 score"
-                    })
-                }
-                else {
-                    setToast({
-                        title: "Good for trying again!",
-                        message: "Let's Go!😀"
-                    })
-                }
+                console.log("hahahahahah")
+                checked.then(value => {
+                    console.log("Value", value)
+                    if(!value) {
+                        giveStudentScore(user, 50)
+                        setToast({
+                            title: "Correct!",
+                            message: "⭐ +50 score"
+                        })
+                    }
+                    else {
+                        setToast({
+                            title: "Good for trying again!",
+                            message: "Let's Go!😀"
+                        })
+                    }
+                })
                 values.picked = ''
             } else {
                 if (values.options.length > 2) {
@@ -229,6 +237,7 @@ function OpenModuleComponent(props) {
      * @param {Number} page 
      */
     const handlePageChange = (page) => {
+        hide_hint2()
         document.getElementById("prev22").style.visibility = "hidden"
         // if selected page is quiz, then keep it into quiz
         if (page == 0 || page == 1 || page == 2) {
@@ -335,7 +344,6 @@ function OpenModuleComponent(props) {
         // get all id's from personalization
         // const personalizationIds = personalization.challenges || []
         // #############################################################
-        // Temporality fixed in this way - Hanra
         const personalizationIds = []
         // #############################################################
 
@@ -366,9 +374,19 @@ function OpenModuleComponent(props) {
 
             tempQuestions.push(question)
         }
-
+        // console.log(typeof divs)
+        let divs2 = null
+        divs2 = (
+            <div id="mc-question-box2">
+                <div id = "mc-question-box-content">
+                <h2>Hint</h2>
+                {divs}
+                </div>
+                <button id = "hide_hint" className = "btn btn-success btn-lg btn-block" onClick= {hide_hint2}>Hide hint</button>
+            </div>
+        )
         setQuestions(tempQuestions)
-        setElements(divs)
+        setElements(divs2)
 
         const randomChallenge = incompleteChallenges[Math.floor(Math.random() * incompleteChallenges.length)]
 
@@ -479,27 +497,27 @@ function OpenModuleComponent(props) {
      */
     const transformJsonToHtml = (moduleBody, index, addContent) => {
         let divs = []
-
+        
         const element = moduleBody[index]
-
         // If the element is a header element, add it to the html
         if (element['type'] === 'header' && addContent) {
             divs.push(
                 <h3>{element['value']}</h3>
             )
         }
+        // console.log(element)
+        // if (element['type'] == '')
 
         // If the element is a html element, add it to the html
         if (element['type'] === 'html' && addContent) {
             divs.push((
-                <span>{element['value']}<br /></span>
+                <span>{element['value']}<br/></span>
             ))
         }
 
         // If the element is a code element, add it to the html
         if (element['type'] === 'code' && addContent) {
             const value = element['value']
-
             divs.push(
                 <div id="code-editor-box">
                     <SyntaxHighlighter language="javascript">
@@ -517,7 +535,6 @@ function OpenModuleComponent(props) {
                 </div>
             )
         }
-
         return divs
     }
 
@@ -576,7 +593,7 @@ function OpenModuleComponent(props) {
                                 })
                             }
                             </div>
-                            <br />
+                            <br/>
                             <button className="btn btn-success btn-lg btn-block" type="submit" disabled={formik.isSubmitting}>Submit</button>
                         </div>
                         <div className="col">
@@ -588,6 +605,9 @@ function OpenModuleComponent(props) {
             </div>
         )
     }
+
+
+
     const { openedModule, setEditor, editorState } = useContext(Context)
     const handleEditorStart = (e) => {
         const module = e.currentTarget.getAttribute('module')
@@ -606,33 +626,76 @@ function OpenModuleComponent(props) {
         })
     }
 
-    /**
+    // const pt = show_point()
+    
+        /**
      * Sends an email to the user with a link to reset their password
      * @param {Event} e 
      */
-         const show_hint = (e) => {
+        const show_hint = (e) => {
             setModulePersonalization(true)
-            // e.preventDefault()
-            console.log("here")
-            document.getElementById("mc-question-box").style.visibility = "hidden"
+            document.getElementById("mc-question-box3").style.display = "none";
+            document.getElementById("mc-question-box2").style.display = "block";
+            document.getElementById("prev1").style.visibility = "hidden"
             document.getElementById("prev22").style.visibility = "hidden"
-            if (document.getElementById("prev01")!=null) {
-                document.getElementById("prev01").style.visibility = "hidden"
-            }
-            if (document.getElementById("prev02")!=null) {
-                document.getElementById("prev02").style.visibility = "hidden"
-            }
-            if (document.getElementById("next01")!=null) {
-                document.getElementById("next01").style.visibility = "hidden"
-            }
-            if (document.getElementById("next02")!=null) {
-                document.getElementById("next02").style.visibility = "hidden"
-            }
-            if (document.getElementById("page_number")!=null) {
-                document.getElementById("page_number").style.visibility = "hidden"
-            }
-            document.getElementById("prev1").style.visibility = "visible"
-            // {pagination}
+            document.getElementById("hide_hint").style.visibility = "hidden"
+        }
+
+
+
+    // const pt = show_point()
+    
+        /**
+     * Sends an email to the user with a link to reset their password
+     * @param {Event} e 
+     */
+         const show_hint2 = (e) => {
+            // console.log({currentScore})
+            currentScore.then(value => {
+                // console.log(value);
+                // console.log(typeof value)
+                var point = parseInt(value)
+                const checked = solvedQuestionCheck(user, moduleName, currentPage)
+                console.log(checked)
+                checked.then(value => {
+                    console.log("CHECKED: ", value)
+                    if(value) {
+                        console.log("free?", value)
+                        setToast({
+                            title: "Good job for trying again",
+                            message: "⭐ Hint is freely offered"
+                        })
+                        setModulePersonalization(true)
+                        // e.preventDefault()
+                        console.log("here")
+                        document.getElementById("mc-question-box3").style.display = "none";
+                        document.getElementById("mc-question-box2").style.display = "block";
+                        document.getElementById("prev1").style.visibility = "hidden"
+                    }
+                    else {
+                        if(point >= 10) {
+                            takeStudentScore(user, 10)
+                            setToast({
+                                title: "Open the hint with the point!",
+                                message: "⭐ -10 score"
+                            })
+                            setModulePersonalization(true)
+                        // e.preventDefault()
+                        console.log("here")
+                        document.getElementById("mc-question-box3").style.display = "none";
+                        document.getElementById("mc-question-box2").style.display = "block";
+                        document.getElementById("prev1").style.visibility = "hidden"
+                        }
+                        else {
+                            setToast({
+                            title: "You don't have enought point!",
+                            message: "⭐ Need at least 10 points"
+                            })
+                        }
+                    }
+                })
+              });
+            
         }
 
       /**
@@ -664,9 +727,25 @@ function OpenModuleComponent(props) {
         // {pagination}
     }
 
+          /**
+     * Sends an email to the user with a link to reset their password
+     * @param {Event} e 
+     */
+           const hide_hint2 = (e) => {
+            document.getElementById("mc-question-box3").style.display = "block";
+            document.getElementById("mc-question-box2").style.display = "none";
+        }
+    
+
     const show_related = () => {
         console.log("here")
         document.getElementById("prev22").style.visibility = "visible"
+    }
+
+    function show_point() {
+        currentScore.then((value) => {
+            document.getElementById('p').innerHTML = 'Current point : ' + value+'</p>';
+        });
     }
 
     return (
@@ -690,7 +769,7 @@ function OpenModuleComponent(props) {
                 <li>
                     <a href="#" id = "menu3" onClick = {() => menu_select(2)}>
                         <span class="icon"><i class="fas fa-link"></i></span>
-                        <span class="item">Coding Challenge</span>
+                        <span class="item" onClick={() => openCodingChallenge(1)}>Coding Challenge</span>
                     </a>
                 </li>
                 {/* <li>
@@ -725,6 +804,13 @@ function OpenModuleComponent(props) {
             <h1>{getPageTitle(currentPage)}</h1>
             <h5>Question {currentPage + 1}/{moduleJson.body.length} &middot; Estimated time to complete lesson: {lessonTime}</h5>
             {/* {showPersonalization ? <PersonalizationComponent onClickYes={show_hint} onClickNo={_ => setModulePersonalization(false)} message="Do you want to see some lecture material on this topic?" /> : <></>} */}
+            <div onload = {show_point()}>
+            <div id = "p" className = "point"></div>
+            <div className = "pointdescription">You need 10 points to use Hint for this question.</div>
+            </div>
+            {/* {show_point()} */}
+            <button className="button8" type="submit" onClick= {show_hint2}>Hint</button>
+            <div id="mc-question-box3"></div>
             {elements}
             {questionsForm}
             <div class="prev12" href="#" id = "prev22" onClick= {show_hint}>Related Learning Material</div>

@@ -7,16 +7,17 @@ import { getFriends } from '../data/Students.js'
 import { Friendship } from '../context/Friendship.js'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-
 import Box from '@mui/material/Box';
 
 import axios from 'axios'
 import styles from '../styles/Button.module.css'
+
 import Editor from "@monaco-editor/react"
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Badges from "./Badges";
+
 
 /**
  * Component for the user's own profile.
@@ -30,14 +31,14 @@ export default function ProfileComponent(props) {
     const [achievements, setAchievements] = useState([])
     const [friends, setFriends] = useState(null)
 
-    const loadAchievements = () => {
-        const studentAchievements = user.achievements
-        const achievements = achievementsJson.achievements.filter(a => studentAchievements.includes(a.id))
+    // const loadAchievements = () => {
+    //     const studentAchievements = user.achievements
+    //     const achievements = achievementsJson.achievements.filter(a => studentAchievements.includes(a.id))
 
-        setAchievements(achievements.map(achievement => {
-            return (<AchievementComponent id={achievement.id} description={achievement.description} emoji={achievement.emoji} />)
-        }))
-    }
+    //     setAchievements(achievements.map(achievement => {
+    //         return (<AchievementComponent id={achievement.id} description={achievement.description} emoji={achievement.emoji} />)
+    //     }))
+    // }
 
     const getFriendsList = () => {
         setFriends([])
@@ -88,21 +89,19 @@ export default function ProfileComponent(props) {
       }
 
     useEffect(() => {
-        loadAchievements()
+        // loadAchievements()
         getFriendsList()
     }, [])
 
     return (
-        <div >
+        <div className="container mx-auto">
             <h3>My Profile</h3>
             <hr />
-
-            <div >
+            <div class="grid lg:grid-col-3" >
                 <div className="row">
-
-                  <div className="col-md-3">
+                    
+                  <div className="col-md-auto">
                     <h4>Modules</h4>
-
                     <div className = {styles.box}>
                         <h2>Introduction to Python Programming
                             <br></br>
@@ -117,10 +116,7 @@ export default function ProfileComponent(props) {
                             <li>Topic Six</li>
                         </ul>
                     </div>
-
                   </div>
-
-                    
 
                   <div className="col-sm">
                     <h4>Achievements</h4>
@@ -135,18 +131,16 @@ export default function ProfileComponent(props) {
                             })
                         }
                     </ul> */}
-                  
                   <div class="border" >
-      
                     <Router>
                         <Routes>
                          <Route path="/" element={<Badges/>}/>
                         </Routes>
-                    </Router>
-                    
+                    </Router> 
                   </div> 
-                  
                   </div>
+                  {/* <div className="row">
+                  </div> */}
                 </div>
             </div>
         </div>
