@@ -1,15 +1,25 @@
-import React, { useEffect, useState } from "react";
-import CodeEditorWindow from "./CodeEditorWindow";
+import React, { useEffect, useState, Component, useRef } from "react";
 import Problem from "./Problem";
 
+import axios from "axios";
+import { classnames } from "../utils/general";
 
+import "react-toastify/dist/ReactToastify.css";
 
+import Editor from "@monaco-editor/react";
 
-class CodeProblem extends React.Component {
+export default class CodeProblem extends Component {
   constructor(props) {
     super(props);
-    this.state = { isVisible: true };
+    this.state = {
+      input: ``, //localStorage.getItem('input')||
+      output: ``,
+      language_id:localStorage.getItem('language_Id')|| 2,
+      user_input: ``,
+      isVisible: false,
+    };
     this.toggleVisibility = this.toggleVisibility.bind(this);
+    this.editorRef = React.createRef();
   }
 
   toggleVisibility(){
@@ -22,31 +32,206 @@ class CodeProblem extends React.Component {
     var bruh = this.state.isVisible;
    //alert(JSON.stringify(bruh));
   }
-
   
+  handleEditorDidMount = (editor, monaco) =>{
+    this.editorRef.current = editor
+}
+
+
+  input = (event) => {
+ 
+    event.preventDefault();
   
-  
+    this.setState({ input: event.target.value });
+    localStorage.setItem('input', event.target.value)
+ 
+  };
+  userInput = (event) => {
+    event.preventDefault();
+    this.setState({ user_input: event.target.value });
+  };
+  language = (event) => {
+   
+    event.preventDefault();
+   
+    this.setState({ language_id: event.target.value });
+    localStorage.setItem('language_Id',event.target.value)
+   
+  };
 
+  submit = async (e) => {
+    e.preventDefault();
 
+    let outputText = document.getElementById("output");
+    outputText.innerHTML = "";
+    outputText.innerHTML += "Creating Submission ...\n";
+    const editorText = this.editorRef.current;
+    const response = await fetch(
+      "https://judge0-ce.p.rapidapi.com/submissions",
+      {
+        method: "POST",
+        headers: {
+          "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
+          "x-rapidapi-key": "6654509f28mshaa982e17ac485aap168a9fjsn83428d85a1bd", // Get yours for free at https://rapidapi.com/judge0-official/api/judge0-ce/
+          "content-type": "application/json",
+          accept: "application/json",
+        },
+        body: JSON.stringify({
+          source_code: editorText,
+          stdin: this.state.user_input,
+          language_id: 71,
+        }),
+      }
+    );
+    outputText.innerHTML += "Submission Created ...\n";
+    const jsonResponse = await response.json();
 
+    let jsonGetSolution = {
+      status: { description: "Queue" },
+      stderr: null,
+      compile_output: null,
+    };
 
+    while (
+      jsonGetSolution.status.description !== "Accepted" &&
+      jsonGetSolution.stderr == null &&
+      jsonGetSolution.compile_output == null
+    ) {
+      outputText.innerHTML = `Creating Submission ... \nSubmission Created ...\nChecking Submission Status\nstatus : ${jsonGetSolution.status.description}`;
+      if (jsonResponse.token) {
+        let url = `https://judge0-ce.p.rapidapi.com/submissions/${jsonResponse.token}?base64_encoded=true`;
 
-  //Style question title
+        const getSolution = await fetch(url, {
+          method: "GET",
+          headers: {
+            "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
+            "x-rapidapi-key": "6654509f28mshaa982e17ac485aap168a9fjsn83428d85a1bd", // Get yours for free at https://rapidapi.com/judge0-official/api/judge0-ce/
+            "content-type": "application/json",
+          },
+        });
+
+        jsonGetSolution = await getSolution.json();
+      }
+    }
+    if (jsonGetSolution.stdout) {
+      const output = atob(jsonGetSolution.stdout);
+
+      outputText.innerHTML = "";
+
+      outputText.innerHTML += `${output}`;
+    } else if (jsonGetSolution.stderr) {
+      const error = atob(jsonGetSolution.stderr);
+
+      outputText.innerHTML = "";
+
+      outputText.innerHTML += `\n Error :${error}`;
+    } else {
+      const compilation_error = atob(jsonGetSolution.compile_output);
+
+      outputText.innerHTML = "";
+
+      outputText.innerHTML += `\n Error :${compilation_error}`;
+    }
+  };
+
+  openQuestions = (uuid) => {
+    getQuestionU(uuid).then(p => {
+        setQuestion(p)
+    }).catch(e => {
+        console.log(e)
+    })
+  }
+
   render() {
-
+ 
     return (
-        <div style={{
-               position: 'relative', left: '12.5%', width: '75%', borderWidth: 10, 
+      <>
+       <div style={{
+               position: 'relative', left: '12.5%', width: '70%', borderWidth: 10, 
         }}>
-          
-          <div style={{fontSize: 24}} onClick={this.toggleVisibility}>
+         
+         <div style={{fontSize: 24}} onClick={this.toggleVisibility}>
             <center><h1>{this.props.questionTitle}   (Click to Expand)</h1></center>
           </div>
 
           {this.state.isVisible && 
-          <div style={{ padding: "2%"
+          <div style={{ padding: "2%", maxHeight: '30vh',
           }}>
-          <Problem/>
+          <Problem questionString={this.props.questionString}/>
+          </div>
+          }
+          {/*this.state.isVisible &&
+          <div style={{
+              borderWidth: 10
+          }}>
+           <CodeEditorWindow questionFiller={this.props.questionFiller} 
+           change={this.onChange}
+           value = {this.state.Input}/>
+          </div>
+        */}
+
+          {this.state.isVisible &&
+          <div style={{
+              borderWidth: 10
+          }}>
+            <Editor
+                height="40vh"
+                defaultLanguage="python"
+                defaultValue={this.props.questionFiller}
+                onChange={this.handleEditorDidMount}
+                theme="vs-dark"
+            />
+          </div>
+        }
+
+          {/*this.state.isVisible &&
+          <div style={{
+              borderWidth: 10
+          }}>
+        <div className="row container-fluid">
+            <textarea
+              required
+              name="solution"
+              id="source"
+              rows="10"
+              onChange={this.input}
+              className="source"
+              value={this.state.input}
+              
+            ></textarea>
+        </div>
+        </div>
+        */}
+
+          {this.state.isVisible &&
+          <div style={{
+              borderWidth: 10
+          }}>
+           
+          <textarea id="input"  
+          rows="2"
+          className={classnames(
+            "focus:outline-none w-full border-2 border-black z-10 rounded-md shadow-[0px_0px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white mt-2"
+          )}
+           onChange={this.userInput}
+           placeholder={`Custom input`}
+           ></textarea>
+
+           
+           <button
+            type="submit"
+            className="btn btn-danger ml-2 mr-2 "
+            onClick={this.submit}
+            >
+            <i className="fas fa-cog fa-fw "></i> Compile and Run
+            </button>
+            {/*<button
+            type="submit"
+            className="btn btn-danger ml-2 mr-2 "
+            onClick={this.submit}
+            >
+            <i className="fas fa-cog fa-fw"></i> Grade
+          </button>*/} 
           </div>
           }
 
@@ -54,26 +239,37 @@ class CodeProblem extends React.Component {
           <div style={{
               borderWidth: 10
           }}>
-            <CodeEditorWindow/>
+            <div>
+              <textarea 
+              id="output"
+              rows="4"
+          className={classnames(
+            "focus:outline-none w-full border-2 border-black z-10 rounded-md shadow-[0px_0px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white mt-2")}
+            placeholder={`Output Window`}
+            ></textarea>
+            {/*<p className="text-sm">
+            Grade:{" "}
+            <span className="font-semibold px-2 py-1 rounded-md bg-gray-100">
+            {1}
+            </span>
+          </p>*/}
+            </div>
           </div>
           }
 
 
-        </div>
-    )
-  }
 
-   
+        </div>
+      </>
+    );
+  }
 }
 
+
+
 CodeProblem.defaultProps = {
-        profilePictureSrc: 'https://example.com/no-profile-picture.jpg',
-        questionTitle: "QuestionTitle",
-        questionID: {},
-        questionFiller: "//Example code",
-        
+  profilePictureSrc: 'https://example.com/no-profile-picture.jpg',
+  questionTitle: "QuestionTitle",
+  questionID: {},
+  questionFiller: "#Example code",
 };
-
-
-
-export default CodeProblem;

@@ -7,18 +7,20 @@
 {
     color: #f6f6f6;
     background: #ab47bc;
-    padding: 20px 50px;
+    padding: 20px 30px;
     font-size: 20px;
     font-weight: 700;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    margin-left: 35px;
+    width: 300px;
+    margin: 0px;
 }
 
 .box ul
 {
     position: relative;
     background: #fff;
+    padding: 0px;
 }
 
 .box ul li
