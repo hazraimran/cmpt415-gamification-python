@@ -8,12 +8,14 @@ import { v4 as uuidv4 } from "uuid"
  * @typedef {Object} QuestionC
  */
  export class questions {
-    constructor(uuid, questionFiller, questionString, questionTitle, questionID) {
+    constructor(uuid, questionFiller, questionString, questionTitle, questionID, questionCode,questionAnswer) {
         this.uuid = uuid
         this.questionFiller = questionFiller
         this.questionString= questionString
         this.questionTitle= questionTitle
         this.questionID = questionID
+        this.questionCode = questionCode
+        this.questionAnswer = questionAnswer
     }
 }
 
@@ -29,11 +31,13 @@ import { v4 as uuidv4 } from "uuid"
             questionString: questions.questionString,
             questionTitle: questions.questionTitle,
             questionID: questions.questionID,
+            questionCode: questions.questionCode,
+            questionAnswer: questions.questionAnswer,
         }
     },
     fromFirestore: function (snapshot, options) {
         const data = snapshot.data(options)
-        return new questions(data.uuid, data.questionFiller, data.questionString, data.questionTitle, data.questionID)
+        return new questions(data.uuid, data.questionFiller, data.questionString, data.questionTitle, data.questionID, data.questionCode,data.questionAnswer)
     }
 }
 
@@ -54,7 +58,7 @@ export async function getQuestionCList() {
     const QuestionC = []
 
     for (const doc of querySnapshot.docs) {
-        QuestionC.push(new questions(doc.id,doc.data().questionFiller, doc.data().questionString, doc.data().questionTitle, doc.data().questionID))
+        QuestionC.push(new questions(doc.id,doc.data().questionFiller, doc.data().questionString, doc.data().questionTitle, doc.data().questionID, doc.data().questionCode,doc.data().questionAnswer))
     }
 
     return QuestionC
