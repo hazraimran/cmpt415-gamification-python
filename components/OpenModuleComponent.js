@@ -237,7 +237,7 @@ function OpenModuleComponent(props) {
      * @param {Number} page 
      */
     const handlePageChange = (page) => {
-        hide_hint2()
+        {hide_hint2}
         document.getElementById("prev22").style.visibility = "hidden"
         // if selected page is quiz, then keep it into quiz
         if (page == 0 || page == 1 || page == 2) {
