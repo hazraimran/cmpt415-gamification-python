@@ -7,16 +7,10 @@ import {getQuestionCList, getQuestionU} from "../data/questions.js"
 import Context from '../context/Context'
 import axios from 'axios'
 
+
 const Landing = () => {
 
   const [questionLists, setquestionLists] = useState([])
-
-  const questionObject = {
-    questionID: 10023,
-    questionTitle: "Discount Problem",
-    questionString:"A shop will give discount of 10% if the cost of purchased quantity is more than 1000. Ask user for quantity.Suppose, one unit will cost 100. Judge and print total cost for user.",
-    questionFiller: "//Code your function below: "
-  }
 
   const loadQuestion = () => {
     getQuestionCList().then(d => {
@@ -35,12 +29,25 @@ const Landing = () => {
     const { setEditorState } = useContext(Context)
 
     const Q1 = questionLists.find(obj =>{
-      return obj.questionID=== '10023'
+      return obj.questionID=== '10002'
     })
 
+
     const Q2 = questionLists.find(obj =>{
-      return obj.questionID=== '1001'
+      return obj.questionID=== '10003'
     })
+
+    const Q3 = questionLists.find(obj =>{
+      return obj.questionID=== '10001'
+    })
+    const Q4 = questionLists.find(obj =>{
+      return obj.questionID=== '10004'
+    })
+    const Q5 = questionLists.find(obj =>{
+      return obj.questionID=== '10005'
+    })
+
+
 
     const closeCodingChallenge = () => {
       setEditorState(0)
@@ -88,9 +95,12 @@ const Landing = () => {
           {outputDetails && <OutputDetails outputDetails={outputDetails} />}
         </div>
               </div>*/}
-  <CodeProblem {...Q1}/>
+  <CodeProblem {...Q1} />
   <CodeProblem {...Q2}/>
-  <CodeProblem />  
+  <CodeProblem {...Q3}/>
+  <CodeProblem {...Q4}/>
+  <CodeProblem {...Q5}/>
+
   <div class="btn-group btn-group-editor-run" role="group">
         <button type="button" className="btn btn-light" href="#" role="button" onClick={closeCodingChallenge}>Close Coding Challenge</button>
   </div> 
