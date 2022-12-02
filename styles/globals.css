@@ -1657,4 +1657,6 @@ textarea::-webkit-scrollbar-thumb{
 .radio-group .form-check-label {
   margin-left: 0.5em;
   font-size: 16px;
+  width : 700px;
+  /* position : absolute; */
 }

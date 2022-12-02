@@ -114,7 +114,7 @@ function OpenModuleComponent(props) {
             show_related()
             if (pick === String(questions[currentQuestion].correctAnswerIndex)) {
                 setCurrentExplanation("✓ " + questions[currentQuestion].explanation)
-                console.log("hahahahahah")
+                // console.log("hahahahahah")
                 checked.then(value => {
                     console.log("Value", value)
                     if(!value) {
@@ -236,8 +236,24 @@ function OpenModuleComponent(props) {
      * Handles a page change.
      * @param {Number} page 
      */
-    const handlePageChange = (page) => {
+    const handlePageChange = (page, resetForm) => {
+        // window.location.reload()
         {hide_hint2}
+        // document.getElementById("radio-check").checked = false
+        // const radioButtons = document.querySelectorAll('input[id="radio-check"]')
+        // radioButtons.checked = false
+        console.log("hahaha")
+        refreshFormik()
+        resetForm()
+        // let radios = document.getElementsByTagName('radio-check');
+        // console.log(radios.length)
+        // for(let i = 0; i < radios.length; i++) {
+        //     // radios[i].onclick = function(e) {
+        //     if(e.ctrlKey) {
+        //         this.checked = false;
+        //     }
+        // // }
+        // }
         document.getElementById("prev22").style.visibility = "hidden"
         // if selected page is quiz, then keep it into quiz
         if (page == 0 || page == 1 || page == 2) {
@@ -256,7 +272,6 @@ function OpenModuleComponent(props) {
         setShowLecture(false)
         setWrongQuestions(0)
         setCurrentQuestion(0)
-        refreshFormik()
         setCurrentPage(page)
         setCurrentMenu(page)
     }
@@ -265,8 +280,15 @@ function OpenModuleComponent(props) {
      * Refreshes the Formik form.
      */
     const refreshFormik = () => {
-        formik.resetForm()
+        formik.resetForm({})
+        document.getElementById("radio-check").checked = false;
         formik.setFieldValue('picked', '')
+        // if (matchId) { // If record exists
+        //     await resetForm({ values }); // sets dirty false
+        // } else { // otherwise
+        //     const newValues = { ...values, matchId: results.data.matchId }; // augment with db id
+        //     await resetForm({ values: newValues }); // sets dirty false
+        // }
         setCurrentExplanation('')
     }
 
@@ -277,12 +299,12 @@ function OpenModuleComponent(props) {
         const pageList = []
         if (currentPage !== 0) {
             pageList.push(
-                <a class="prev" href="#" tabindex="-1" id = "prev01" onClick={() => handlePageChange(currentPage - 1)}>Prev</a>
+                <a class="prev" href="#" tabindex="-1" id = "prev01" onClick={() => handlePageChange(currentPage - 1, formik.resetForm)}>Prev</a>
             )
         }
         else {
             pageList.push(
-                <a class="prev_disabled" href="#" id = "prev02" tabindex="-1" onClick={() => handlePageChange(currentPage - 1)}>Prev</a>
+                <a class="prev_disabled" href="#" id = "prev02" tabindex="-1" onClick={() => handlePageChange(currentPage - 1, formik.resetForm)}>Prev</a>
             )
         }
         pageList.push(<a class = "bottom_page" id = "page_number" disabled=""> Page {currentPage + 1}/{moduleJson.body.length} </a>)
@@ -315,12 +337,12 @@ function OpenModuleComponent(props) {
 
         if (currentPage !== moduleJson.body.length - 1) {
             pageList.push(
-                <a class="next" id = "next01" href="#" onClick={() => handlePageChange(currentPage + 1)}>Next</a>
+                <a class="next" id = "next01" href="#" onClick={() => handlePageChange(currentPage + 1, formik.resetForm)}>Next</a>
             )
         }
         else {
             pageList.push(
-                <a class="next_disabled" id = "next02" href="#" onClick={() => handlePageChange(currentPage + 1)}>Next</a>
+                <a class="next_disabled" id = "next02" href="#" onClick={() => handlePageChange(currentPage + 1,formik.resetForm)}>Next</a>
             )
         }
         setPagination(pageList)
@@ -586,7 +608,7 @@ function OpenModuleComponent(props) {
                                 questions[currentQuestion].answers.map((q, index) => {
                                     return (
                                         <div key={index} className="radio-group">
-                                            <input type="radio" className="form-check-input" disabled={formik.isSubmitting} name="picked" value={index} onChange={formik.handleChange} />
+                                            <input id = "radio-check" type="radio" className="form-check-input" disabled={formik.isSubmitting} name="picked" value={index} onChange={formik.handleChange} />
                                             <span className="form-check-label">{q}</span>
                                         </div>
                                     )
