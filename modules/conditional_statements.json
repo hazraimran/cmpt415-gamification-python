@@ -1198,12 +1198,12 @@
                         }
                     ],
                     "answers": [
-                        "110",
                         "011",
+                        "110",
                         "3",
                         "Infinite loop"
                     ],
-                    "correctAnswerIndex": 0,
+                    "correctAnswerIndex": 1,
                     "explanation": "Since the first two Boolean expressions are false the else will be executed."
                 }
             ],
