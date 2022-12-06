@@ -34,5 +34,4 @@ if (app.name && typeof window !== 'undefined') {
   analytics = getAnalytics(app)
 }
 
-module.exports.auth = auth
-module.exports.db = db
+module.exports = {auth, db, app}

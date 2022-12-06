@@ -56,6 +56,21 @@ export default function NavComponent(props) {
         setPage(Pages.DISCUSSION)
     }
 
+    const handleLeaderBoardClick = (e) => {
+        console.log("HHHH")
+        e.preventDefault()
+        setOpenedModule(null)
+        setPage(Pages.LeaderBoard)
+    }
+
+    const handleProfileV2Click = (e) => {
+        console.log("HHHH")
+        e.preventDefault()
+        setOpenedModule(null)
+        setPage(Pages.PROFILEV2)
+    }
+
+
     /**
      * Handles the editor board being opened.
      * @param {*} e 
@@ -111,6 +126,9 @@ export default function NavComponent(props) {
                     </li>
                     <li className="nav-item">
                         <a className={"nav-link" + checkIfActive(Pages.PROFILE)} aria-current="page" href="#" onClick={handleProfileClick}>My Profile</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className={"nav-link" + checkIfActive(Pages.PROFILEV2)} aria-current="page" href="#" onClick={handleProfileV2Click}>Profile V2</a>
                     </li>
                 </ul>
                 <span className="navbar-text">

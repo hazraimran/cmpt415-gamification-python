@@ -14,6 +14,7 @@ const Landing = () => {
 
   const loadQuestion = () => {
     getQuestionCList().then(d => {
+      console.log(d)
         setquestionLists(d)
     }).catch(e => {
         console.log(e)

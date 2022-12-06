@@ -224,12 +224,19 @@ function LoginComponent(props) {
 
         if (validateSignIn({ email, password })) {
             // Do firebase login
+            
+            console.log(
+                'firebase login'
+            )
             signInWithEmailAndPassword(auth, email, password)
+            
             .then(() => {
+                console.log('then place')
                 if(!auth.currentUser.emailVerified) {
                     alert("Email is not verified")
                 }
                 else {getStudent(email).then((student) => {
+                    console.log(student)
                     localStorage.setItem('auth', JSON.stringify(student))
                     setUser(student)
                 })}

@@ -11,7 +11,7 @@ import RecentActivityComponent from './RecentActivityComponent'
 import conditionalStatementsJson from '../modules/conditional_statements.json'
 import EditorComponent from './EditorComponent'
 import EasyEditorComponent from './EasyEditorComponent'
-import LeaderboardComponent from './LeaderboardComponent'
+import LeaderBoard from './LeaderBoard'
 import { Student, getStudent, createStudent } from '../data/Students'
 import validator from 'validator'
 import { v4 as uuidv4 } from "uuid"
@@ -69,6 +69,8 @@ function OpenModuleComponent(props) {
     // State for personalization (lecture visibility, etc.)
     const [showPersonalization, setShowPersonalization] = useState(null)
 
+    // change leaderboard
+    const [isLeaderBoardEnabled, setLeaderBoardEnabled]= useState(false)
     // Load personalization
     useEffect(() => {
         getPersonalization(user.uuid).then(p => {
@@ -213,11 +215,11 @@ function OpenModuleComponent(props) {
             var menu1 = document.getElementById("menu1")
             var menu2 = document.getElementById("menu2")
             var menu3 = document.getElementById("menu3")
-            // var menu4 = document.getElementById("menu4")
+            var menu4 = document.getElementById("menu4")
             // var menu5 = document.getElementById("menu5")
             // var menu6 = document.getElementById("menu6")
             // var menu7 = document.getElementById("menu7")
-            var menu = [menu1, menu2, menu3]
+            var menu = [menu1, menu2, menu3, menu4]
             menu[page].classList = "active"
             for (let i = 0; i < menu.length; i++) {
                 if (i != page) {
@@ -433,6 +435,13 @@ function OpenModuleComponent(props) {
         setEditorState(editorType)
     }
 
+    /**
+     * Opens a coding challenge. Can be easy or hard.
+     * @param {Number} editorType 
+     */
+     const openLeaderBoard = (editorType) => {
+        setLeaderBoardEnabled(!isLeaderBoardEnabled)
+    }
     /**
      * Estimates the time it takes to read the lecture notes.
      */
@@ -987,6 +996,19 @@ function OpenModuleComponent(props) {
         return text
     }
 
+    if(isLeaderBoardEnabled){
+    return (
+        <div>    
+            <div className="App" id="main">
+                <LeaderBoard/>
+            </div>
+            <button style={{marginBottom:'100px'}} className="btn btn-primary" onClick={()=>openLeaderBoard(1)}>
+                Close Leader Board
+            </button>
+        </div>
+    )
+    }
+    else{
     return (
         <div className = "big_box">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"></link>
@@ -1009,6 +1031,12 @@ function OpenModuleComponent(props) {
                     <a href="#" id = "menu3" onClick = {() => menu_select(2)}>
                         <span class="icon"><i class="fas fa-link"></i></span>
                         <span class="item" onClick={() => openCodingChallenge(1)}>Coding Challenge</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id = "menu4" onClick = {() => menu_select(3)}>
+                        <span class="icon"><i class="fas fa-star"></i></span>
+                        <span class="item" onClick={() => openLeaderBoard(1)}>Leader Board</span>
                     </a>
                 </li>
                 <div id = "quiz_list">
@@ -1185,6 +1213,7 @@ function OpenModuleComponent(props) {
         </div>
         </div>
     )
+            }
 }
 
 export default memo(OpenModuleComponent)

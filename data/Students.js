@@ -56,7 +56,7 @@ export async function getStudent(email) {
     const q = query(collection(db, "students"), where("email", "==", email))
 
     const querySnapshot = await getDocs(q)
-    
+    console.log(querySnapshot)
     if (querySnapshot.empty) {
         return null
     }

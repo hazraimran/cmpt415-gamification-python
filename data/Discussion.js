@@ -18,6 +18,24 @@ import { getStudentById } from './Students'
         this.upvoted_by = upvoted_by
     }
 }
+
+/**
+ * Represents a read module in the system
+ * 
+ * @typedef {Object} Module
+ */
+ export class Module {
+    constructor(name, cQuizCount, tQuizCount, cLearningCount,tLearningCount, cCodingChallenge, tCodingChallenge) {
+        this.name = name
+        this.cQuizCount = cQuizCount
+        this.tQuizCount = tQuizCount
+        this.cLearningCount = cLearningCount
+        this.tLearningCount = tLearningCount
+        this.cCodingChallenge = cCodingChallenge
+        this.tCodingChallenge = tCodingChallenge
+    }
+}
+
 /**
  * Represents a response in the system
  * 
@@ -52,6 +70,46 @@ import { getStudentById } from './Students'
     fromFirestore: function (snapshot, options) {
         const data = snapshot.data(options)
         return new Discussion(data.uuid, data.title, data.author, data.content, dateToString(data.date.toDate()), data.upvoted_by)
+    }
+}
+
+
+const readModuleProgess = {
+    toFirestore: function (module) {
+        return {
+            name: module.name,
+            cQuizCount: module.cQuizCount,
+            cLearningCount: module.cLearningCount,
+            tLearningCount: module.tLearningCount,
+            tQuizCount: module.tQuizCount,
+            cCodingChallenge: module.cCodingChallenge,
+            tCodingChallenge: module.tCodingChallenge
+        }
+    },
+    fromFirestore: function (snapshot, options) {
+        const data = snapshot.data(options)
+        return new Module(data.name, data.cQuizCount, data.tQuizCount, data.cLearningCount, data.tLearningCount, data.cCodingChallenge, data.tCodingChallenge)
+    }
+}
+
+/**
+ * Converts between the Discussion class schema and
+ * the firebase schema
+ */
+ const leadershipConvertor = {
+    toFirestore: function (discussion) {
+        return {
+            uuid: discussion.uuid,
+            dt : discussion.dt,
+            img: discussion.img,
+            location: discussion.location,
+            name: discussion.name,
+            score: discussion.score
+        }
+    },
+    fromFirestore: function (snapshot, options) {
+        const data = snapshot.data(options)
+        return new Discussion(data.uuid, data.dr, data.img, data.location, data.name, data.score)
     }
 }
 

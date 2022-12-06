@@ -6,10 +6,13 @@ import ModulesComponent from '../components/ModulesComponent'
 import { Pages } from '../context/Pages'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import ProfileComponent from '../components/ProfileComponent'
+import ProfileComponentV2 from '../components/ProfileV2'
 import StudentProfileComponent from '../components/StudentProfileComponent'
 import DiscussionComponent from '../components/DiscussionComponent'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import Leaderboard from '../components/LeaderBoard'
+
 
 export default function Home() {
   const [loading, setLoading] = useState(true)
@@ -67,6 +70,9 @@ export default function Home() {
       currentPage = (<StudentProfileComponent></StudentProfileComponent>)
     } else if (page === Pages.DISCUSSION) {
       currentPage = (<DiscussionComponent></DiscussionComponent>)
+    }
+    else if(page == Pages.PROFILEV2){
+      currentPage = (<ProfileComponentV2></ProfileComponentV2>)  
     }
 
     return (
