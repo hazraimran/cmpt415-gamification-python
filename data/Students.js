@@ -291,10 +291,11 @@ export async function giveStudentScore(student, score) {
 
     const studentData = studentDoc.data()
     const currentQuestion = studentData.solved_question
+    // console.log("current", currentQuestion[0]['l'][3])
     const len = currentQuestion.length
     var flag = false
     var num = -1
-    console.log("length", len)
+    // console.log("length", len)
     for (let i = 0; i < len; i++) {
         if (currentQuestion[i]['title'] == title) {
             flag = true
@@ -302,7 +303,13 @@ export async function giveStudentScore(student, score) {
         }
     }
     if (flag) {
-        if (questionNumber in currentQuestion[num]['l']) {
+        var check = false
+        for(let i = 0; i < currentQuestion[num]['l'].length; i++) {
+            if (questionNumber == currentQuestion[num]['l'][i]) {
+                check = true
+            } 
+        }
+        if (check) {
             return true
         }
         else {

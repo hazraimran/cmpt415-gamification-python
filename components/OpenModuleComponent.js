@@ -226,6 +226,15 @@ function OpenModuleComponent(props) {
                     }
                 }
             }
+            if(page == 0) {
+                document.getElementById("quiz_list").style.visibility = "hidden";
+            }
+            if(page == 2) {
+                document.getElementById("quiz_list").style.visibility = "hidden";
+            }
+            if (page == 1) {
+                document.getElementById("quiz_list").style.visibility = "visible";
+            }
             // menu1.classList.toggle("active")
             // menu2.classList.toggle("acitve")
         }
@@ -237,6 +246,7 @@ function OpenModuleComponent(props) {
      * @param {Number} page 
      */
     const handlePageChange = (page, resetForm) => {
+        // document.getElementById("quiz_list").style.visibility = "visible";
         // window.location.reload()
         {hide_hint2}
         // document.getElementById("radio-check").checked = false
@@ -1002,7 +1012,7 @@ function OpenModuleComponent(props) {
                 <li>
                     <a href="#" id = "menu2" onClick = {() => menu_select(1)}>
                         <span class="icon"><i class="far fa-question-circle"></i></span>
-                        <span class="item" onClick={() => handlePageChange(0)}>Quiz</span>
+                        <span class="item" onClick={() => handlePageChange(0, formik.resetForm)}>Quiz</span>
                     </a>
                 </li>
                 <li>
@@ -1011,12 +1021,7 @@ function OpenModuleComponent(props) {
                         <span class="item" onClick={() => openCodingChallenge(1)}>Coding Challenge</span>
                     </a>
                 </li>
-                <div id = "quiz_list">
-                    <br></br>
-                    <br></br>
-                    <br></br>
-                    <br></br>
-                    <br></br>
+                <div id = "quiz_list" class = "quiz_list3">
                     <br></br>
                     <li>
                         {/* <span id = "quiz1" class = "quiz_list"> {question_solve_check1()} </span> */}

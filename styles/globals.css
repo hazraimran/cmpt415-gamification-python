@@ -986,7 +986,7 @@ body{
   width : 2000px;
   /* width : 100%; */
   height: 1200px;
-  transform: translate(14.5%, -93%);
+  transform: translate(14.5%, -81%);
   /* align-items: center; */
   /* justify-content: center; */
   overflow: hidden;
@@ -1668,4 +1668,8 @@ textarea::-webkit-scrollbar-thumb{
 
 .quiz_list1 {
   transform: translate(10%, 0%);
+}
+
+.quiz_list3 {
+  visibility: hidden;
 }
