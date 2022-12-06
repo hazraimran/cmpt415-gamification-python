@@ -250,14 +250,12 @@ export async function giveStudentScore(student, score) {
     console.log("length", len)
     for (let i = 0; i < len; i++) {
         if (currentQuestion[i]['title'] == title) {
-            console.log("TITLE SAME")
             flag = true
             num = i
         }
     }
     if (flag) {
         if (questionNumber in currentQuestion[num]['l']) {
-            console.log("ALREADY DONE")
             return true
         }
         else {
@@ -305,7 +303,6 @@ export async function giveStudentScore(student, score) {
     }
     if (flag) {
         if (questionNumber in currentQuestion[num]['l']) {
-            console.log("ALREADY DONE")
             return true
         }
         else {
