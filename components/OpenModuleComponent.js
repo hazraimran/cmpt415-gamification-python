@@ -769,6 +769,223 @@ function OpenModuleComponent(props) {
             document.getElementById('p').innerHTML = 'Current point : ' + value+'</p>';
         });
     }
+    /**
+     * @param {Number} page 
+     * @returns {String} title of page
+     */
+    const checking_solved = (page) => {
+        const checked = solvedQuestionCheck(user, moduleName, 0)
+        const checked1 = solvedQuestionCheck(user, moduleName, 1)
+        const checked2 = solvedQuestionCheck(user, moduleName, 2)
+        const checked3 = solvedQuestionCheck(user, moduleName, 3)
+        const checked4 = solvedQuestionCheck(user, moduleName, 4)
+        const checked5 = solvedQuestionCheck(user, moduleName, 5)
+        const checked6 = solvedQuestionCheck(user, moduleName, 6)
+        const checked7 = solvedQuestionCheck(user, moduleName, 7)
+        const checked8 = solvedQuestionCheck(user, moduleName, 8)
+        const checked9 = solvedQuestionCheck(user, moduleName, 9)
+        const checked10 = solvedQuestionCheck(user, moduleName, 10)
+        const checked11 = solvedQuestionCheck(user, moduleName, 11)
+        const checked12 = solvedQuestionCheck(user, moduleName, 12)
+        const checked13 = solvedQuestionCheck(user, moduleName, 13)
+        const checked14 = solvedQuestionCheck(user, moduleName, 14)
+        const checked15 = solvedQuestionCheck(user, moduleName, 15)
+        const checked16 = solvedQuestionCheck(user, moduleName, 16)
+        const checked17 = solvedQuestionCheck(user, moduleName, 17)
+        const checked18 = solvedQuestionCheck(user, moduleName, 18)
+        const checked19 = solvedQuestionCheck(user, moduleName, 19)
+        checked.then((value) => {
+            if(value){
+                document.getElementById('question1_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question1_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked1.then((value) => {
+            if(value){
+                document.getElementById('question2_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question2_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked2.then((value) => {
+            if(value){
+                document.getElementById('question3_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question3_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked3.then((value) => {
+            if(value){
+                document.getElementById('question4_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question4_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked4.then((value) => {
+            if(value){
+                document.getElementById('question5_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question5_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked5.then((value) => {
+            if(value){
+                document.getElementById('question6_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question6_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked6.then((value) => {
+            if(value){
+                document.getElementById('question7_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question7_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked7.then((value) => {
+            if(value){
+                document.getElementById('question8_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question8_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked8.then((value) => {
+            if(value){
+                document.getElementById('question9_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question9_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked9.then((value) => {
+            if(value){
+                document.getElementById('question10_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question10_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked10.then((value) => {
+            if(value){
+                document.getElementById('question11_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question11_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked11.then((value) => {
+            if(value){
+                document.getElementById('question12_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question12_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked12.then((value) => {
+            if(value){
+                document.getElementById('question13_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question13_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked13.then((value) => {
+            if(value){
+                document.getElementById('question14_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question14_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked14.then((value) => {
+            if(value){
+                document.getElementById('question15_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question15_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked15.then((value) => {
+            if(value){
+                document.getElementById('question16_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question16_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked16.then((value) => {
+            if(value){
+                document.getElementById('question17_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question17_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked17.then((value) => {
+            if(value){
+                document.getElementById('question18_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question18_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked18.then((value) => {
+            if(value){
+                document.getElementById('question19_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question19_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+        checked19.then((value) => {
+            if(value){
+                document.getElementById('question20_check').innerHTML = ' ✅ ' +'</p>';
+            }
+            else{
+                document.getElementById('question20_check').innerHTML = ' ❌ ' +'</p>';
+            }
+        });
+
+            
+        
+    }
+
+    /**
+     * @param {Number} page 
+     * @returns {String} title of page
+     */
+    const question_solve_check1 = (page) => {
+        const checked = solvedQuestionCheck(user, moduleName, currentPage)
+        var text = printChecking()
+        console.log("TEXT is HERE")
+        console.log(text)
+        checked.then(value => {
+            // console.log(value)
+            if(!value) {
+                // <span id = "quiz1" class = "quiz_list"> ❌ </span>
+                // return '❌'
+                // console.log("quiz1hehiehiehieh")
+                text = '❌'
+            }
+            else {
+                // <span id = "quiz1" class = "quiz_list"> ✅ </span>
+                // return '✅'
+                text = '✅'
+                // return 'checked'
+                // console.log("hhidfjlaidjfliadj;flijdal;ifjladjf;liasd;j;fl")
+            }
+        })
+        return text
+    }
 
     return (
         <div className = "big_box">
@@ -794,6 +1011,117 @@ function OpenModuleComponent(props) {
                         <span class="item" onClick={() => openCodingChallenge(1)}>Coding Challenge</span>
                     </a>
                 </li>
+                <div id = "quiz_list">
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <li>
+                        {/* <span id = "quiz1" class = "quiz_list"> {question_solve_check1()} </span> */}
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(0)}></h1>
+                        <span id = "question1_check" class = "quiz_list1"></span>
+                        <button class="quiz_list" onClick = {() => handlePageChange(0, formik.resetForm)}>Question1</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(1)}></h1>
+                        <div id = "question2_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(1, formik.resetForm)}>Question2</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(2)}></h1>
+                        <div id = "question3_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(2, formik.resetForm)}>Question3</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(3)}></h1>
+                        <div id = "question4_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(3, formik.resetForm)}>Question4</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(4)}></h1>
+                        <div id = "question5_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(4, formik.resetForm)}>Question5</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(5)}></h1>
+                        <div id = "question6_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(5, formik.resetForm)}>Question6</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(6)}></h1>
+                        <div id = "question7_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(6, formik.resetForm)}>Question7</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(7)}></h1>
+                        <div id = "question8_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(7, formik.resetForm)}>Question8</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(8)}></h1>
+                        <div id = "question9_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(8, formik.resetForm)}>Question9</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(9)}></h1>
+                        <div id = "question10_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(9, formik.resetForm)}>Question10</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(10)}></h1>
+                        <div id = "question11_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(10, formik.resetForm)}>Question11</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(11)}></h1>
+                        <div id = "question12_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(11, formik.resetForm)}>Question12</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(12)}></h1>
+                        <div id = "question13_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(12, formik.resetForm)}>Question13</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(13)}></h1>
+                        <div id = "question14_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(13, formik.resetForm)}>Question14</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(14)}></h1>
+                        <div id = "question15_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(14, formik.resetForm)}>Question15</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(15)}></h1>
+                        <div id = "question16_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(15, formik.resetForm)}>Question16</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(16)}></h1>
+                        <div id = "question17_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(16, formik.resetForm)}>Question17</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(17)}></h1>
+                        <div id = "question18_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(17, formik.resetForm)}>Question18</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(18)}></h1>
+                        <div id = "question19_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(18, formik.resetForm)}>Question19</button>
+                        </div>
+                        <div class="input-group">
+                        <h1 onload = {checking_solved(19)}></h1>
+                        <div id = "question20_check" class ="quiz_list1"></div>
+                        <button class="quiz_list" onClick = {() => handlePageChange(19, formik.resetForm)}>Question20</button>
+                        </div>
+                    </li>
+                </div>
                 {/* <li>
                     <a href="#" id = "menu4" onClick = {() => menu_select(3)}>
                         <span class="icon"><i class="far fa-question-circle"></i></span>
