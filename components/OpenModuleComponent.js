@@ -821,6 +821,7 @@ function OpenModuleComponent(props) {
             }
         });
         checked2.then((value) => {
+            console.log("checkedededed")
             if(value){
                 document.getElementById('question3_check').innerHTML = ' ✅ ' +'</p>';
             }

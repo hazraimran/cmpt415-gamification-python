@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.modalClass {  
+  text-align: left;  
+  margin-top: 0px;  
+} 
+.custom-dialog {
+  width:48% 
+  !important; top:20%;
+}
+.hintClass{
+  width: 50%;
+  margin: auto;
+}
+
 /* CSS */
 .button8 {
   position: absolute;
@@ -978,6 +992,7 @@ body{
   display: none;
 }
 
+
 .quiz_box {
   /* background-color : white; */
   border-radius: 34px;
@@ -1669,6 +1684,7 @@ textarea::-webkit-scrollbar-thumb{
 .quiz_list1 {
   transform: translate(10%, 0%);
 }
+
 
 .quiz_list3 {
   visibility: hidden;

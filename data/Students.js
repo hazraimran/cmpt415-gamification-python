@@ -233,7 +233,7 @@ export async function giveStudentScore(student, score) {
  */
  export async function solvedQuestionUpdate(student, title, questionNumber) {
     const q = query(collection(db, "students"), where("email", "==", student.email))
-
+    console.log("1")
     const querySnapshot = await getDocs(q)
 
     if (querySnapshot.empty) {
@@ -250,25 +250,47 @@ export async function giveStudentScore(student, score) {
     console.log("length", len)
     for (let i = 0; i < len; i++) {
         if (currentQuestion[i]['title'] == title) {
+            console.log("2")
             flag = true
             num = i
         }
     }
     if (flag) {
-        if (questionNumber in currentQuestion[num]['l']) {
-            return true
+        console.log("here2222")
+        console.log(currentQuestion[num]['l'])
+        console.log("question", questionNumber)
+        for(let i = 0; i < currentQuestion[num]['l'].length; i++) {
+            if(currentQuestion[num]['l'][i] == questionNumber) {
+                // console.log("3")
+                return true
+            }
+            else {
+                console.log("HIHIHI 4")
+                currentQuestion[num]['l'].push(questionNumber)
+                console.log(currentQuestion[num]['l'])
+                await updateDoc(studentDoc.ref, { solved_question: currentQuestion })
+                return true
+            }
         }
-        else {
-            currentQuestion[num]['l'].push(questionNumber)
-        }
+        // if (questionNumber in currentQuestion[num]['l']) {
+        //     console.log("3")
+        //     return true
+        // }
+
     }
     else {
+        console.log("here3333")
         const l = [questionNumber]
         currentQuestion.push({
             title, l
         })
+        await updateDoc(studentDoc.ref, { solved_question: currentQuestion })
+        return true
     }
-    await updateDoc(studentDoc.ref, { solved_question: currentQuestion })
+    // console.log("heeeee")
+    // console.log(currentQuestion)
+    // await updateDoc(studentDoc.ref, { solved_question: currentQuestion })
+    // console.log(studentData.solved_question)
     return false
 }
 
@@ -318,6 +340,7 @@ export async function giveStudentScore(student, score) {
     }
     return false
 }
+
 
 
 /**
@@ -429,4 +452,77 @@ export async function getStudentAnswers(student, question) {
     } else {
         console.log("No such document!")
     }
+}
+
+
+/**
+ * Adds to a student's score
+ * @param {Student} student 
+ * @param {Number} score 
+ * @returns {Boolean} true if score was successfully changed, false otherwise
+ */
+ export async function giveStudentScoreCode(email, score) {
+    const q = query(collection(db, "students"), where("email", "==", email))
+
+    const querySnapshot = await getDocs(q)
+
+    if (querySnapshot.empty) {
+        return false
+    }
+
+    const studentDoc = querySnapshot.docs[0]
+
+    const studentData = studentDoc.data()
+    const currentScore = studentData.score
+
+    await updateDoc(studentDoc.ref, { score: currentScore + score })
+
+    return true
+}
+
+/**
+ * Adds to a student's score
+ * @param {Student} student 
+ * @param {Number} score 
+ * @returns {Boolean} true if score was successfully changed, false otherwise
+ */
+ export async function takeStudentScoreCode(email, score) {
+    const q = query(collection(db, "students"), where("email", "==", email))
+
+    const querySnapshot = await getDocs(q)
+
+    if (querySnapshot.empty) {
+        return false
+    }
+
+    const studentDoc = querySnapshot.docs[0]
+
+    const studentData = studentDoc.data()
+    const currentScore = studentData.score
+
+    await updateDoc(studentDoc.ref, { score: currentScore - score })
+
+    return true
+}
+
+/**
+ * Adds to a student's score
+ * @param {Student} student 
+ * @returns {Boolean} true if score was successfully changed, false otherwise
+ */
+ export async function getStudentScoreCode(email) {
+    const q = query(collection(db, "students"), where("email", "==", email))
+
+    const querySnapshot = await getDocs(q)
+
+    if (querySnapshot.empty) {
+        return false
+    }
+
+    const studentDoc = querySnapshot.docs[0]
+
+    const studentData = studentDoc.data()
+    const currentScore = studentData.score
+
+    return String(currentScore)
 }

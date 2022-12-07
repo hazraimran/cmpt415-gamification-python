@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid"
  * @typedef {Object} QuestionC
  */
  export class questions {
-    constructor(uuid, questionFiller, questionString, questionTitle, questionID, questionCode,questionAnswer) {
+    constructor(uuid, questionFiller, questionString, questionTitle, questionID, questionCode,questionAnswer,questionType,questionHint) {
         this.uuid = uuid
         this.questionFiller = questionFiller
         this.questionString= questionString
@@ -16,6 +16,8 @@ import { v4 as uuidv4 } from "uuid"
         this.questionID = questionID
         this.questionCode = questionCode
         this.questionAnswer = questionAnswer
+        this.questionType = questionType
+        this.questionHint = questionHint
     }
 }
 
@@ -33,11 +35,13 @@ import { v4 as uuidv4 } from "uuid"
             questionID: questions.questionID,
             questionCode: questions.questionCode,
             questionAnswer: questions.questionAnswer,
+            questionType: questions.questionType,
+            questionHint: questions.questionHint,
         }
     },
     fromFirestore: function (snapshot, options) {
         const data = snapshot.data(options)
-        return new questions(data.uuid, data.questionFiller, data.questionString, data.questionTitle, data.questionID, data.questionCode,data.questionAnswer)
+        return new questions(data.uuid, data.questionFiller, data.questionString, data.questionTitle, data.questionID, data.questionCode,data.questionAnswer,data.questionType,data.questionHint)
     }
 }
 
@@ -58,7 +62,7 @@ export async function getQuestionCList() {
     const QuestionC = []
 
     for (const doc of querySnapshot.docs) {
-        QuestionC.push(new questions(doc.id,doc.data().questionFiller, doc.data().questionString, doc.data().questionTitle, doc.data().questionID, doc.data().questionCode,doc.data().questionAnswer))
+        QuestionC.push(new questions(doc.id,doc.data().questionFiller, doc.data().questionString, doc.data().questionTitle, doc.data().questionID, doc.data().questionCode,doc.data().questionAnswer,doc.data().questionType,doc.data().questionHint))
     }
 
     return QuestionC
@@ -71,6 +75,23 @@ export async function getQuestionCList() {
  */
 export async function getQuestionU(uuid) {
     const q = query(collection(db, "questions"), where("uuid", "==", uuid))
+
+    const querySnapshot = await getDocs(q)
+    
+    if (querySnapshot.empty) {
+        return null
+    }
+
+    return QuestionCConverter.fromFirestore(querySnapshot.docs[0], { idField: "uuid" })
+}
+
+/**
+ * Returns a question's uuid by its "questionID"
+ * @param {String} questionID
+ * @returns Question
+ */
+export async function getQuestionUUID(questionID) {
+    const q = query(collection(db, "questions"), where("questionID", "==", questionID))
 
     const querySnapshot = await getDocs(q)
     

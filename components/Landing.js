@@ -6,12 +6,16 @@ import CodeProblem from "./editor/components/CodeProblem";
 import {getQuestionCList, getQuestionU} from "../data/questions.js"
 import Context from '../context/Context'
 import axios from 'axios'
-
+import { giveStudentScore } from "../data/Students";
 
 const Landing = () => {
 
   const [questionLists, setquestionLists] = useState([])
-
+  const [page, setpage] = useState([])
+  // Context: user, editor state, challenge data, personalization, toast
+  const { user, setChallengeData, personalization, setPersonalization, setToast } = useContext(Context)
+  const { setEditorState } = useContext(Context)
+  
   const loadQuestion = () => {
     getQuestionCList().then(d => {
         setquestionLists(d)
@@ -20,87 +24,102 @@ const Landing = () => {
     })
 }
 
+
+
+
     useEffect(() => {
         // calls the function on the load of the page
         loadQuestion();
+        console.log(questionLists);
+        console.log(Q)
         
-
     }, []);
-    const { setEditorState } = useContext(Context)
 
-    const Q1 = questionLists.find(obj =>{
+    /*useEffect(()=>{
+
+    })
+
+    /*const handlePageChange = () => {
+      const length = questionLists.length
+    }*/
+
+
+
+    /*const Q1 = questionLists.find(obj =>{
       return obj.questionID=== '10002'
     })
 
+    //setQ11(current => [...current,...Q1,...{email:user.email}])
+    //console.log(Q11)
 
-    const Q2 = questionLists.find(obj =>{
+
+    const Q2 = (questionLists.find(obj =>{
       return obj.questionID=== '10003'
+    }))
+
+    //setQ2([...Q2,{email:user.email}])
+    //console.log(Q2)
+    //console.log(questionLists[0])
+   
+
+
+    Q3 = questionLists.find(obj =>{
+      return obj.questionID === '10001'
+    })
+    Q4 = questionLists.find(obj =>{
+      return obj.questionID === '10004'
+    })
+    Q5 = questionLists.find(obj =>{
+      return obj.questionID === '10005'
+    })*/
+    const Q = questionLists.filter(obj =>{
+      return obj.questionType === "condition"
     })
 
-    const Q3 = questionLists.find(obj =>{
-      return obj.questionID=== '10001'
-    })
-    const Q4 = questionLists.find(obj =>{
-      return obj.questionID=== '10004'
-    })
-    const Q5 = questionLists.find(obj =>{
-      return obj.questionID=== '10005'
-    })
+    //console.log(Q)
 
+    const Q1 ={
+      question: Q[0],
+      //questionString:questionLists[0].questionString,
+      email: user.email,
+    }
+    const Q2 ={
+      question: Q[1],
+      //questionString:questionLists[0].questionString,
+      email: user.email,
+    }
+    const Q3 ={
+      question: Q[2],
+      //questionString:questionLists[0].questionString,
+      email: user.email,
+    }
+    const Q4 ={
+      question: Q[3],
+      //questionString:questionLists[0].questionString,
+      email: user.email,
+    }
+    const Q5 ={
+      question: Q[4],
+      //questionString:questionLists[0].questionString,
+      email: user.email,
+    }
+
+    
+    
 
 
     const closeCodingChallenge = () => {
       setEditorState(0)
   }
+  console.log(Q1);
 
   return (
     <>
-      {/*<div className="h-4 w-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"></div>
-      <div className="flex flex-row">
-     
-        <div className="px-4 py-2">
-          <LanguagesDropdown onSelectChange={onSelectChange} />
-        </div>
-        <div className="px-4 py-2">
-          <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme} />
-        </div>
-      </div>
-      <div className="flex flex-row space-x-4 items-start px-4 py-4">
-        <div className="flex flex-col w-full h-full justify-start items-end">
-          <CodeEditorWindow
-            code={code}
-            onChange={onChange}
-            language={language?.value}
-            theme={theme.value}
-          />
-        </div>
-        <div className="right-container flex flex-shrink-0 w-[30%] flex-col">
-          <OutputWindow outputDetails={outputDetails} />
-          <div className="flex flex-col items-end">
-            <CustomInput
-              customInput={customInput}
-              setCustomInput={setCustomInput}
-            />
-            <button
-              onClick={handleCompile}
-              disabled={!code}
-              className={classnames(
-                "mt-4 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0",
-                !code ? "opacity-50" : ""
-              )}
-            >
-              {processing ? "Processing..." : "Compile and Execute"}
-            </button>
-          </div>
-          {outputDetails && <OutputDetails outputDetails={outputDetails} />}
-        </div>
-              </div>*/}
-  <CodeProblem {...Q1} />
+  <CodeProblem {...Q1}/>
   <CodeProblem {...Q2}/>
   <CodeProblem {...Q3}/>
   <CodeProblem {...Q4}/>
   <CodeProblem {...Q5}/>
-
   <div class="btn-group btn-group-editor-run" role="group">
         <button type="button" className="btn btn-light" href="#" role="button" onClick={closeCodingChallenge}>Close Coding Challenge</button>
   </div> 
