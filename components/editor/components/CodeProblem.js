@@ -315,8 +315,8 @@ export default class CodeProblem extends Component {
                "completed": completed,
               });
               giveStudentScoreCode(this.props.email,100)
-              point = point + 100
             }
+            point = point + 100
             this.setState({completed: true})
           }
       } else {
@@ -330,6 +330,7 @@ export default class CodeProblem extends Component {
         if (completed){
           giveStudentScoreCode(this.props.email,this.state.grade);
           this.setState({completed: true})
+          point = point + 100
         }
       }
       this.setState({currentscore:point})
