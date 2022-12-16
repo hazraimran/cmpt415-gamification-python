@@ -1,0 +1,1388 @@
+{
+    "index": 0,
+    "name": "Conditional Statements",
+    "description": "Covers conditional statements in Python; if statements",
+    "achievements": [0],
+    "body": [
+        {
+            "page": 0,
+            "name": "Nested Conditionals",
+            "mcqs": [
+                {
+                    "type": "contents",
+                    "id": "content",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "What will be the output of the following code snippet?"
+                        },
+                        {
+                            "type": "code",
+                            "value": "if 1 + 4 == 5:\n    print('Correct')\nelse:\n    print('Incorrect')\n"
+                        }
+                    ],
+                    "answers": [
+                        "Syntax Error",
+                        "Correct",
+                        "Incorrect",
+                        "Successfully compiled but no output"
+                    ],
+                    "correctAnswerIndex": 1,
+                    "explanation": "This is a legal nested if-else statement. The inner if-else statement is contained completely within the body of the outer else-block."
+                },
+                {
+                    "type": "mc",
+                    "id": "nested_conditionals_mc_2",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "Is there a nested conditional in the following code?"
+                        },
+                        {
+                            "type": "code",
+                            "value": "x = 10\ny = 10\nif x < y:\n    print(\"x is less than y\")"
+                        }
+                    ],
+                    "answers": [
+                        "No",
+                        "Yes"
+                    ],
+                    "correctAnswerIndex": 0,
+                    "explanation": "There is a conditional in the code, but it is not nested within another conditional."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "One conditional can also be nested within another. For example, assume we have two integer variables, x and y. The following pattern of selection shows how we might decide how they are related to each other."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelse:\n    if x > y:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The outer conditional contains two branches. The second branch (the else from the outer) contains another if statement, which has two branches of its own. Those two branches could contain conditional statements as well."  
+                },
+                {
+                    "type": "challenge",
+                    "id": "nested_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "nested_conditionals_2",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is equal to y, print \"x is equal to y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x==y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 1,
+            "name": "Nested Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "nested_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "What is the Python keyword to add an alternative condition in an if statement?"
+                        },
+                        {
+                            "type": "",
+                            "value": ""
+                        }
+                    ],
+                    "answers": [
+                        "elif",
+                        "else if",
+                        "elsif",
+                        "None of the above"
+                    ],
+                    "correctAnswerIndex": 0,
+                    "explanation": "This is a legal nested if-else statement. The inner if-else statement is contained completely within the body of the outer else-block."
+                },
+                {
+                    "type": "mc",
+                    "id": "nested_conditionals_mc_2",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "Is there a nested conditional in the following code?"
+                        },
+                        {
+                            "type": "code",
+                            "value": "x = 10\ny = 10\nif x < y:\n    print(\"x is less than y\")"
+                        }
+                    ],
+                    "answers": [
+                        "No",
+                        "Yes"
+                    ],
+                    "correctAnswerIndex": 0,
+                    "explanation": "There is a conditional in the code, but it is not nested within another conditional."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "One conditional can also be nested within another. For example, assume we have two integer variables, x and y. The following pattern of selection shows how we might decide how they are related to each other."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelse:\n    if x > y:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The outer conditional contains two branches. The second branch (the else from the outer) contains another if statement, which has two branches of its own. Those two branches could contain conditional statements as well."  
+                },
+                {
+                    "type": "challenge",
+                    "id": "nested_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "nested_conditionals_2",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is equal to y, print \"x is equal to y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x==y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 2,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "The below code snippet will give an error"
+                        },
+                        {
+                            "type": "code",
+                            "value": "x = 2\ny = 5\nif x-y:\n   print(x)\nelse:\n   print(y)"
+                        }
+                    ],
+                    "answers": [
+                        "True",
+                        "False"
+                    ],
+                    "correctAnswerIndex": 0,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 3,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "Every if statement has to always be followed by either an else statement or an elif statement."
+                        },
+                        {
+                            "type": "",
+                            "value": ""
+                        }
+                    ],
+                    "answers": [
+                        "True",
+                        "False"
+                    ],
+                    "correctAnswerIndex": 1,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 4,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "Which of the following is true about the code below?"
+                        },
+                        {
+                            "type": "code",
+                            "value": "x = 3\nif (x > 2):\n  x = x * 2;\nif (x > 4):\n   x = 0;\nprint(x)"
+                        }
+                    ],
+                    "answers": [
+                        "if x is greater than 2, x will equal 0 after this code executes",
+                        "x will always equal 0 after this code executes for any value of x",
+                        "if x is greater than 2, the value in x will be doubled after this code executes",
+                        "No answer text provided."
+                    ],
+                    "correctAnswerIndex": 2,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 5,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "If values of two operands are not equal, then condition becomes true."
+                        },
+                        {
+                            "type": "",
+                            "value": ""
+                        }
+                    ],
+                    "answers": [
+                        "True",
+                        "False"
+                    ],
+                    "correctAnswerIndex": 1,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 6,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "Which of these following will  be calculating the factorial of a number?"
+                        },
+                        {
+                            "type": "code",
+                            "value": " def fact(num):\nif num == 0:\n   return 1\nelse:\n   return ___"                        
+                        }
+                    ],
+                    "answers": [
+                        "num*fact(num-1)",
+                        "(num-1)*(num-2)",
+                        "num*(num-1)",
+                        "fact(num)*fact(num-1)"
+                    ],
+                    "correctAnswerIndex": 0,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 7,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "From what we have discussed about for-loop in the lectures, which of the following cannot be used by the for-loop to iterate (the expression on the right of the 'in' keyword):"
+                        },
+                        {
+                            "type": "code",
+                            "value": "x = 2\ny = 5\nif x-y:\n   print(x)\nelse:\n   print(y)"
+                        }
+                    ],
+                    "answers": [
+                        "a boolean expression",
+                        "a list",
+                        "a list of lists",
+                        "the returned value of the function range",
+                        "none of the above"
+                    ],
+                    "correctAnswerIndex": 0,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 8,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "What happens if you run the following code?"
+                        },
+                        {
+                            "type": "code",
+                            "value": " x = input('Enter a value')\nif x > 50:\n print('You have entered a value over 50.')"
+                        }
+                    ],
+                    "answers": [
+                        "It prints “You have entered a value over 50.” if the user enters 52",
+                        "It prints whatever the user enters",
+                        "It does not run because the type of the value x is different than that of 50",
+                        "It does not run because the value of x is not set when the program starts"
+                    ],
+                    "correctAnswerIndex": 2,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 9,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "Consider the following recursive function, how many times is countdown called if we call countdown(5)? "
+                        },
+                        {
+                            "type": "code",
+                            "value": "def countdown(count):\n   if count == 0:\n        print('Go!')\n   else:\n        print(count)\n        countdown(count-1)"
+                        }
+                    ],
+                    "answers": [
+                        "5",
+                        "6",
+                        "1",
+                        "10"
+                    ],
+                    "correctAnswerIndex": 1,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 10,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "What happens if you run the following code?"
+                        },
+                        {
+                            "type": "code",
+                            "value": " x = input('Enter a value: ')\nif x > 50:\n   print('You have entered a value over 50.'') "
+                        }
+                    ],
+                    "answers": [
+                        "It prints “You have entered a value over 50.” if the user enters 52",
+                        "It prints whatever the user enters",
+                        "It does not run because the type of the value x is different than that of 50",
+                        "It does not run because the value of x is not set when the program starts"
+                    ],
+                    "correctAnswerIndex": 2,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 11,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "Suppose the variable product is initialized to 2, and bonus is initialized to 4. What is the final value of bonus after the following code is run?"
+                        },
+                        {
+                            "type": "code",
+                            "value": "if product == 2:\n    if bonus < 5:\n        bonus = 10\n    else:\n        bonus = bonus + 2\nelse:\n    bonus = bonus + 1"
+                        }
+                    ],
+                    "answers": [
+                        "4",
+                        "5",
+                        "6",
+                        "10"
+                    ],
+                    "correctAnswerIndex": 3,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 12,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "Which one of the following statements best describes the following code?"
+                        },
+                        {
+                            "type": "code",
+                            "value": "ratings = ['3', '4', '-2', '0', '5']\nif ratings > 2:\n   print('You recieved good ratings')"
+                        }
+                    ],
+                    "answers": [
+                        "It will output “You received good ratings”",
+                        "It does not run because the if statement is comparing two different types",
+                        "It does not run because the list contains strings instead of integers",
+                        "It will run, but will not produce any output to the screen"
+                    ],
+                    "correctAnswerIndex": 1,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 13,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "Suppose a has the value 4 and b has the value 5. Consider the code fragment blow. True or False: if the second 'if' were replaced by 'elif', then the new code fragment prints exactly the same output as the original."
+                        },
+                        {
+                            "type": "code",
+                            "value": "print('big')\nif b - 1 == a + 1;\n    print('hot')\nif 2*a == (3*b + 1) / 2:\n    print('dog')"
+                        }
+                    ],
+                    "answers": [
+                        "True",
+                        "False"
+                    ],
+                    "correctAnswerIndex": 0,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 14,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "Suppose the variable product is initialized to 1, and bonus is initialized to 0. What is the final value of bonus after the following code is run? "
+                        },
+                        {
+                            "type": "code",
+                            "value": "if product == 2:\n    if bonus < 5:\n        bonus = 10\n    else:\n        bonus = bonus + 2\nelse:\n    bonus = bonus + 1"
+                        }
+                    ],
+                    "answers": [
+                        "0",
+                        "1",
+                        "2",
+                        "10"
+                    ],
+                    "correctAnswerIndex": 0,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 15,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "The output of the below code snippet is ____"
+                        },
+                        {
+                            "type": "code",
+                            "value": "x = 2\ny = 4\nif x>y:\n   if x == 2:\n        print(x+3)\n    else:\n        print(y+2)\nelse:\n    print(y+4)"
+                        }
+                    ],
+                    "answers": [
+                        "5",
+                        "8",
+                        "6",
+                        "None of the above"
+                    ],
+                    "correctAnswerIndex": 1,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 16,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "If the value of left operand is _____ than the value of right operand, then condition becomes true."
+                        },
+                        {
+                            "type": "",
+                            "value": ""
+                        }
+                    ],
+                    "answers": [
+                        "less",
+                        "bigger",
+                        "none of the above"
+                    ],
+                    "correctAnswerIndex": 0,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 17,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "What will be the output of the following code?"
+                        },
+                        {
+                            "type": "code",
+                            "value": "def convert(b):\n    if(b==0):\n        return l\n    dig=b%2\n    l.append(dig)\nconvert(b//2)\nconvert(6)\nl.reverse()\nfor i in l:\n    print(i,end='')"
+                        }
+                    ],
+                    "answers": [
+                        "011",
+                        "110",
+                        "3",
+                        "Infinite loop"
+                    ],
+                    "correctAnswerIndex": 1,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 18,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "True or false? The code above can be rewritten recursively."
+                        },
+                        {
+                            "type": "code",
+                            "value": "def mystery(numList):\n   value = 0\n   for num in numList:\n      value = value + num\n   return value\nprint(mystery([1,3,5,7,9]))"
+                        }
+                    ],
+                    "answers": [
+                        "True",
+                        "False"
+                    ],
+                    "correctAnswerIndex": 0,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        },
+        {
+            "page": 19,
+            "id": "chained_conditionals_mc_1",
+            "name": "Chained Conditionals",
+            "mcqs": [
+                {
+                    "type": "mc",
+                    "id": "chained_conditionals_mc_1",
+                    "question": [
+                        {
+                            "type": "html",
+                            "value": "What is a fundamental problem with this function?"    
+                        },
+                        {
+                            "type": "code",
+                            "value": "def foo(x):\n    if (x > 10):\n        return foo(x-2)\n    else:\n        \nreturn foo(x-1)"
+                        }
+                    ],
+                    "answers": [
+                        "It has multiple recursive calls",
+                        "A function cannot call itself",
+                        "It is returning a value; recursive functions cannot return a value",
+                        "It has no base case"
+                    ],
+                    "correctAnswerIndex": 3,
+                    "explanation": "Since the first two Boolean expressions are false the else will be executed."
+                }
+            ],
+            "content": [
+                {
+                    "type": "html",
+                    "value": "Python provides an alternative way to write nested selection such as the one shown in the previous section. This is sometimes referred to as a chained conditional."
+                },
+                {
+                    "type": "code",
+                    "value": "if x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "html",
+                    "value": "The flow of control can be drawn in a different orientation but the resulting pattern is identical to the one shown above."
+                },
+                {
+                    "type": "image",
+                    "value": "https://runestone.academy/ns/books/published/thinkcspy/_images/flowchart_chained_conditional.png"
+                },
+                {
+                    "type": "html",
+                    "value": "elif is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of elif statements but only a single (and optional) final else statement is allowed and it must be the last branch in the statement."
+                },
+                {
+                    "type": "html",
+                    "value": "Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes."
+                },
+                {
+                    "type": "html",
+                    "value": "Here is the same program using elif."
+                },
+                {
+                    "type": "code",
+                    "value": "x = 10\ny = 10\n\nif x < y:\n    print(\"x is less than y\")\nelif x > y:\n    print(\"x is greater than y\")\nelse:\n    print(\"x and y must be equal\")"
+                },
+                {
+                    "type": "challenge",
+                    "id": "chained_conditionals_1",
+                    "value": "Using nested conditionals, write a program that prints out the following pattern:\n- If x is less than y, print \"x is less than y\"\n- If x is greater than y, print \"x is greater than y\"\n- If x and y are equal, print \"x and y must be equal\"",
+                    "code": "x = 10\ny = 10\n\nif ({{1:x<y}}):\n    print(\"x is less than y\")\nelse:\n    if {{2:x<y}}:\n        print(\"x is greater than y\")\n    else:\n        print(\"x and y must be equal\")"
+                }
+            ]
+        }
+    ]
+}
